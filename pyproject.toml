@@ -1,0 +1,83 @@
+[project]
+name = "hello-postmodern-python-tooling"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Stig B. Dørmænen", email = "stigbd@gmail.com" }]
+dependencies = ["fastapi[standard]~=0.113.0"]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+"hello-postmodern-python-tooling" = "hello_postmodern_python_tooling:main"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.rye]
+managed = true
+dev-dependencies = ["pyright~=1.1.379", "pytest~=8.3.2", "pytest-cov~=5.0.0"]
+
+[tool.ruff]
+# if this is a library, enter the _minimum_ version you
+# want to support, otherwise do py312
+target-version = "py312"
+line-length = 120        # use whatever number makes you happy
+
+[tool.ruff.lint]
+# you can see the looong list of rules here:
+# https://docs.astral.sh/ruff/rules/
+# here's a couple to start with
+# select = [
+# 	"A",    # warn about shadowing built-ins
+# 	"E",    # style stuff, whitespaces
+# 	"F",    # important pyflakes lints
+# 	"I",    # import sorting
+# 	"N",    # naming
+# 	"T100", # breakpoints (probably don't want these in prod!)
+# ]
+# if you're feeling confident you can do:
+select = ["ALL"]
+ignore = [
+    "ANN401", # Any should be allowed
+    "D211",
+    "D213",
+    "COM812",
+    "D203",
+    "ISC001",
+] # and then manually ignore annoying ones:
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    # at least this three should be fine in tests:
+    "S101", # asserts allowed in tests...
+    "ARG",  # Unused function args -> fixtures nevertheless are functionally relevant...
+    "FBT",  # Don't care about booleans as positional arguments in tests, e.g. via @pytest.mark.parametrize()
+]
+
+[tool.ruff.lint.isort]
+# so it knows to group first-party stuff last
+known-first-party = ["postmodern"]
+
+[tool.pyright]
+venvPath = "."         # rye installs the venv in the current dir
+venv = ".venv"         #       in a folder called `.venv`
+strict = ["**/*.py"]   # use 'strict' checking on all files
+pythonVersion = "3.12" # if library, specify the _lowest_ you support
+
+[tool.rye.scripts]
+fmt = "rye fmt"
+lint = "rye lint --fix"
+check = "pyright"
+test = "rye test -- -rA --cov --cov-report term --cov-report html"
+all = { chain = ["fmt", "lint", "check", "test"] }
+
+[tool.coverage.paths]
+source = ["hello_poetry_and_nox"]
+
+[tool.coverage.run]
+branch = true
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 87
+show_missing = true
