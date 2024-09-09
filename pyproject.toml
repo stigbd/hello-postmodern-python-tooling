@@ -17,7 +17,13 @@ build-backend = "pdm.backend"
 [tool.rye]
 managed = true
 virtual = true
-dev-dependencies = ["pyright~=1.1.379", "pytest~=8.3.2", "pytest-cov~=5.0.0"]
+dev-dependencies = [
+    "pyright~=1.1.379",
+    "pytest~=8.3.2",
+    "pytest-cov~=5.0.0",
+    "pytest-docker~=3.1.1",
+    "requests~=2.32.3",
+]
 
 [tool.ruff]
 # if this is a library, enter the _minimum_ version you
@@ -70,8 +76,9 @@ pythonVersion = "3.12" # if library, specify the _lowest_ you support
 fmt = "rye fmt"
 lint = "rye lint --fix"
 check = "pyright"
-test = "rye test -- -rA --cov --cov-report term --cov-report html"
-all = { chain = ["fmt", "lint", "check", "test"] }
+test_fast = "rye test -- tests/fast -rA --cov --cov-report term --cov-report html"
+test_slow = "rye test -- tests/slow -rA"
+all = { chain = ["fmt", "lint", "check", "test_fast", "test_slow"] }
 
 [tool.coverage.paths]
 source = ["hello_poetry_and_nox"]
