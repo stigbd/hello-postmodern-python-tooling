@@ -14,21 +14,21 @@ class Message(BaseModel):
     """The message model."""
 
     message: str
-    timestamp: datetime = datetime.now(tz=ZoneInfo("Europe/Oslo"))
+    timestamp: datetime
 
 
 @app.get("/")
 async def read_root() -> Any:
     """Get the root resource."""
-    return Message(
-        message="Hello world!",
-    )
+    return Message(message="Hello world!", timestamp=datetime.now(tz=ZoneInfo("Europe/Oslo")))
 
 
 @app.get("/covered-by-test")
 async def read_covered_by_test(covered: bool | None = None) -> Any:
     """Get the covered-by-test resource."""
-    if covered:
-        return Message(message="This path is covered by a test!")
+    timestamp = datetime.now(tz=ZoneInfo("Europe/Oslo"))
 
-    return Message(message="This path is not covered by a test!")
+    if covered:
+        return Message(message="This path is covered by a test!", timestamp=timestamp)
+
+    return Message(message="This path is not covered by a test!", timestamp=timestamp)
