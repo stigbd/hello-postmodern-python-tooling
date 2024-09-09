@@ -52,6 +52,8 @@ Create lockfiles and install Python + dependencies:
 % rye run fastapi dev
 ```
 
+To see the API-documentation, go to <http://127.0.0.1:8000/docs>
+
 ## References
 
 [^1]: [Chris Arderne (2024), Beyond Hypermodern: Python is easy now](https://rdrn.me/postmodern-python/)
