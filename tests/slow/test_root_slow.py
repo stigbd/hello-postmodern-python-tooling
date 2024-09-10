@@ -11,7 +11,7 @@ import pytest
 
 def is_responsive(url: str) -> bool | None:
     """Check if container is ready."""
-    time.sleep(1)  # sleep a little, to let the docker container start
+    time.sleep(2)  # sleep a little, to let the docker container start
     try:
         response = httpx.get(url, timeout=30)
         if response.status_code == HTTPStatus.OK:
