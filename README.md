@@ -54,6 +54,13 @@ Create lockfiles and install Python + dependencies:
 
 To see the API-documentation, go to <http://127.0.0.1:8000/docs>
 
+## Run the server in docker
+
+```shell
+% docker build -t myimage . 
+% docker run --name mycontainer -p 8000:80 myimage
+```
+
 ## References
 
 [^1]: [Chris Arderne (2024), Beyond Hypermodern: Python is easy now](https://rdrn.me/postmodern-python/)

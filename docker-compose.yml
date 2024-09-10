@@ -1,0 +1,5 @@
+services:
+  my-api:
+    build: .
+    ports:
+      - 8000:80

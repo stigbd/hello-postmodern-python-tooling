@@ -20,4 +20,5 @@ jobs:
       - run: rye fmt --check      # check formatting is correct
       - run: rye lint             # and linting
       - run: rye run check        # typecheck too
-      - run: rye run test         # then run your tests!
+      - run: rye run test_fast    # then run your tests!
+      - run: rye run test_slow    # then run your tests!

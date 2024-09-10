@@ -15,9 +15,14 @@ anyio==4.4.0
     # via httpx
     # via starlette
     # via watchfiles
+attrs==24.2.0
+    # via pytest-docker
 certifi==2024.8.30
     # via httpcore
     # via httpx
+    # via requests
+charset-normalizer==3.3.2
+    # via requests
 click==8.1.7
     # via typer
     # via uvicorn
@@ -43,6 +48,7 @@ idna==3.8
     # via anyio
     # via email-validator
     # via httpx
+    # via requests
 iniconfig==2.0.0
     # via pytest
 jinja2==3.1.4
@@ -68,13 +74,16 @@ pygments==2.18.0
 pyright==1.1.379
 pytest==8.3.2
     # via pytest-cov
+    # via pytest-docker
 pytest-cov==5.0.0
+pytest-docker==3.1.1
 python-dotenv==1.0.1
     # via uvicorn
 python-multipart==0.0.9
     # via fastapi
 pyyaml==6.0.2
     # via uvicorn
+requests==2.32.3
 rich==13.8.0
     # via typer
 shellingham==1.5.4
@@ -91,6 +100,8 @@ typing-extensions==4.12.2
     # via pydantic
     # via pydantic-core
     # via typer
+urllib3==2.2.2
+    # via requests
 uvicorn==0.30.6
     # via fastapi
     # via fastapi-cli
