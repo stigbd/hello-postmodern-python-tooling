@@ -33,7 +33,7 @@ Update rye itself
 % rye self update
 ```
 
-## Set and run # hello-postmodern-python-tooling
+## Set and run hello-postmodern-python-tooling
 
 The following assumes you are in the root of the project.
 
