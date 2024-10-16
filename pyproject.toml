@@ -7,9 +7,6 @@ dependencies = ["fastapi[standard]~=0.113.0"]
 readme = "README.md"
 requires-python = ">= 3.8"
 
-[project.scripts]
-"hello-postmodern-python-tooling" = "hello_postmodern_python_tooling:main"
-
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
