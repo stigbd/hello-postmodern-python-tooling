@@ -7,14 +7,17 @@ from zoneinfo import ZoneInfo
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI()
 
-
+# The message model
 class Message(BaseModel):
     """The message model."""
 
     message: str
     timestamp: datetime
+
+
+# Create the FastAPI app
+app = FastAPI()
 
 
 @app.get("/")
