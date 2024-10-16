@@ -2,13 +2,40 @@
 
 A small project to play with the "postmodern" and simpler toolchain outlined in [^1].
 
-## Setup
+
+## Install and test Rye
 
 Install [rye](https://rye.astral.sh/):
 
 ```shell
 % curl -sSf https://rye.astral.sh/get | bash
 ```
+
+Test the installation
+
+```shell
+% rye --version
+```
+
+Create a hello-world project in a new directory and run it:
+
+```shell
+% rye init --script hello-world
+% cd hello-world
+% rye sync
+% rye run hello-world
+Hello from hello-world!
+```
+
+Update rye itself
+
+```shell
+% rye self update
+```
+
+## Set and run # hello-postmodern-python-tooling
+
+The following assumes you are in the root of the project.
 
 Create lockfiles and install Python + dependencies:
 
@@ -67,11 +94,6 @@ To see the API-documentation, go to <http://127.0.0.1:8000/docs>
 % rye sync --update-all
 ```
 
-## Update rye itself
-
-```shell
-% rye self update
-```
 ## References
 
 [^1]: [Chris Arderne (2024), Beyond Hypermodern: Python is easy now](https://rdrn.me/postmodern-python/)
